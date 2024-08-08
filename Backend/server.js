@@ -4,8 +4,8 @@ const colors = require("colors");
 const morgan = require("morgan");
 const rootroute = require("./routes/rootroute");
 const connectDB = require("./config/db");
-const Product = require("./models/Product");
-const e = require("express");
+const categories = require("./coontrollers/categories");
+const productroot = require('./routes/productroot')
 const app = express();
 
 
@@ -23,18 +23,7 @@ const PORT =  2000;
 
 app.get("/", rootroute);
 
-app.use("/product",async(req,res)=>{
-  const data  = await Product.find();
-  const ans = data.map((e)=>{
-    return [
-      e.name,
-      e.description
-
-    ]
-  });
-  res.send(ans);
-
-})
+app.use("/home",productroot);
 
 
 
