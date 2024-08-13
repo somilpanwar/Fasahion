@@ -6,7 +6,7 @@ const categories = async (req, res) => {
     try {
         const{category,productid} = req.params;
        
-        let products;
+        let products; 
         if (category) {
           const searchcategory = category.toLowerCase();
           products = await ProductCollection.find({
